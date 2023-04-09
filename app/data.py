@@ -10,9 +10,7 @@ from pymongo import MongoClient
 
 
 class Database:
-    '''
-    Class that holds a MongoDB database and collection of MonsterLab.Monster objects.
-    '''
+    '''Class that holds a MongoDB database and collection of MonsterLab.Monster objects.'''
 
     def __init__(self):
         # Connect to database using credentials from .env
@@ -52,5 +50,5 @@ class Database:
 
 if __name__ == "__main__":
     db = Database()
-    db.seed(10)
-    print(db.dataframe())
+    db.reset()
+    db.seed(2048)
