@@ -1,5 +1,6 @@
 '''This module holds a function to generate a graph using altair.'''
-from altair import Chart, Tooltip, X, Y, TitleParams
+
+from altair import Chart, Tooltip, X, Y, TitleParams, Color, Scale
 from pandas import DataFrame
 
 
@@ -29,10 +30,10 @@ def chart(df: DataFrame, x: str, y: str, target: str) -> Chart:
                 width=400,
                 height=450,
                 padding=50,
-                background="#eeeeee").mark_circle(size=60).encode(
+                background="#eeeeee").mark_circle(size=80, opacity=0.7).encode(
         x=X(x),
         y=Y(y),
-        color=target,
+        color=Color(target, scale=Scale(scheme="magma")),
         tooltip=Tooltip(df.drop(columns="_id").columns.to_list()))
 
     return vis

@@ -44,8 +44,3 @@ class Database:
         if self.count() == 0:
             return None
         return DataFrame(self.collection.find({})).to_html()
-
-
-if __name__ == "__main__":
-    db = Database()
-    
