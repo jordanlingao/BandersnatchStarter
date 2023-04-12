@@ -15,14 +15,12 @@ class Database:
     def __init__(self):
         # Connect to database using credentials from .env
         load_dotenv()
-        database = MongoClient(
-            getenv("DB_URL"),
-            tlsCAFile=where())["Bandersnatch"]
+        self.database = MongoClient(getenv("DB_URL"),tlsCAFile=where())["Bandersnatch"]
 
         # Create the Monsters collection
-        if "Monsters" not in database.list_collection_names():
-            database.create_collection("Monsters")
-        self.collection = database.get_collection("Monsters")
+        if "Monsters" not in self.database.list_collection_names():
+            self.database.create_collection("Monsters")
+        self.collection = self.database.get_collection("Monsters")
 
     def seed(self, amount):
         '''Inserts a given number of MonsterLab.Monster objects into the Monster collection.'''
@@ -50,5 +48,4 @@ class Database:
 
 if __name__ == "__main__":
     db = Database()
-    db.reset()
-    db.seed(2048)
+    
