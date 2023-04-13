@@ -37,10 +37,10 @@ class Database:
 
     def dataframe(self) -> DataFrame:
         '''Returns pandas DataFrame of documents in the collection.'''
-        return DataFrame(self.collection.find({}))
+        return DataFrame(self.collection.find({}, {"_id": False}))
 
     def html_table(self) -> str:
         '''Returns html table of documents in the collection.'''
         if self.count() == 0:
             return None
-        return DataFrame(self.collection.find({})).to_html()
+        return self.collection.dataframe().to_html()
