@@ -13,3 +13,5 @@ pymongo[srv]
 python-dotenv
 scikit-learn
 scipy
+torch
+tensorflow

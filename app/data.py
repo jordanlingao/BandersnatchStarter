@@ -16,16 +16,13 @@ class Database:
         # Connect to database using credentials from .env
         load_dotenv()
         self.database = MongoClient(getenv("DB_URL"),tlsCAFile=where())["Bandersnatch"]
-
-        # Create the Monsters collection
-        if "Monsters" not in self.database.list_collection_names():
-            self.database.create_collection("Monsters")
         self.collection = self.database.get_collection("Monsters")
 
     def seed(self, amount):
         '''Inserts a given number of MonsterLab.Monster objects into the Monster collection.'''
-        return self.collection.insert_many(
+        self.collection.insert_many(
             [Monster().to_dict() for i in range(amount)])
+        return f"Successfully inserted {amount} documents!"
 
     def reset(self):
         '''Deletes all documents in the collection.'''
@@ -43,4 +40,8 @@ class Database:
         '''Returns html table of documents in the collection.'''
         if self.count() == 0:
             return None
-        return self.collection.dataframe().to_html()
+        return self.dataframe().to_html()
+    
+if __name__ == "__main__":
+    db = Database()
+    print(db.html_table())

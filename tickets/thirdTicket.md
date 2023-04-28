@@ -30,18 +30,18 @@ Submit the following in your course:
 ## Guidance
 
 ### A. Notebook Model Training & Tuning
-- [ ] Create a notebook for model testing and tuning
-- [ ] Train and tune at least 3 models using the data generated in an earlier Sprint
-- [ ] Measure the accuracy of the models and report info about your best model 
-- [ ] Write a paragraph or two about your best model
+- [X] Create a notebook for model testing and tuning
+- [X] Train and tune at least 3 models using the data generated in an earlier Sprint
+- [X] Measure the accuracy of the models and report info about your best model 
+- [X] Write a paragraph or two about your best model
 
 ### B. Machine Learning Interface Class
 - Starter File: `app/machine`
 - Suggested ML Library: Scikit-learn
 
-- [ ] Does the __init__ function properly initialize the machine learning model and store it as an attribute?
-- [ ] Does the class properly handle and store the target and feature data when initializing the model?
-- [ ] Does the __call__ function take in a DataFrame of feature data and return a prediction and the probability of the prediction?
+- [X] Does the __init__ function properly initialize the machine learning model and store it as an attribute?
+- [X] Does the class properly handle and store the target and feature data when initializing the model?
+- [X] Does the __call__ function take in a DataFrame of feature data and return a prediction and the probability of the prediction?
 
 #### Example Machine Learning Interface
 ```python
@@ -65,8 +65,8 @@ class Machine:
 ```
 
 ### C. Model Serialization
-- [ ] Does `save()` properly save the machine learning model to the specified filepath using joblib?
-- [ ] Does `open()` properly load a saved machine learning model from the specified filepath using joblib?
+- [X] Does `save()` properly save the machine learning model to the specified filepath using joblib?
+- [X] Does `open()` properly load a saved machine learning model from the specified filepath using joblib?
 
 ### D. API Model Integration
-- [ ] Does `info()` return a string with the name of the base model and the timestamp of when it was initialized?
+- [X] Does `info()` return a string with the name of the base model and the timestamp of when it was initialized?
