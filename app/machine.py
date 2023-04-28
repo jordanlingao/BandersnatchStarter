@@ -22,7 +22,7 @@ class Machine:
     def __call__(self, feature_basis):
         prediction = self.model.predict(feature_basis)
         confidence = self.model.predict_proba(feature_basis).max()
-        return prediction, confidence
+        return *prediction, confidence
 
     def save(self, filepath):
         '''Saves model to given filepath'''
@@ -35,4 +35,4 @@ class Machine:
 
     def info(self):
         '''Returns the name of the model and the current datetime'''
-        return self.name, datetime.datetime.now().strftime("%Y-%m-%d %l:%M:%S")
+        return f"Base Model: {self.name} <br /> Timestamp: {datetime.datetime.now():%Y-%m-%d %l:%M:%S %p}"
