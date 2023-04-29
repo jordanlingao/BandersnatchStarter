@@ -153,6 +153,12 @@ form p {
     margin: 0 0 -20px;
 }
 
+form input[type="checkbox"] {
+    cursor: pointer;
+    float: right;
+    width: auto;
+}
+
 form input {
     width: 140px;
     margin: 2px 20px 5px 5px;

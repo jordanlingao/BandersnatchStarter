@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
     <h1>Bandersnatch Data</h1>
+    <p><button type="button" onclick="window.location.href='/reset';">Get New Data</button></p>
     <p>Monster Count: {{ count | safe }}</p>
     {{ table | safe }}
 {% endblock %}

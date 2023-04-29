@@ -3,7 +3,7 @@ import os
 
 from Fortuna import random_int, random_float
 from MonsterLab import Monster
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from pandas import DataFrame
 
 from app.data import Database
@@ -34,6 +34,14 @@ def data():
         count=db.count(),
         table=db.html_table(),
     )
+
+@APP.route("/reset")
+def reset():
+    db = Database()
+    db.reset()
+    db.seed(500)
+    return redirect("/data")
+
 
 
 @APP.route("/view", methods=["GET", "POST"])
@@ -69,7 +77,7 @@ def model():
     db = Database()
     options = ["Level", "Health", "Energy", "Sanity", "Rarity"]
     filepath = os.path.join("app", "model.joblib")
-    if not os.path.exists(filepath):
+    if request.values.get("retrain", type=bool) or not os.path.exists(filepath):
         df = db.dataframe()
         machine = Machine(df[options])
         machine.save(filepath)
@@ -94,7 +102,6 @@ def model():
         prediction=prediction,
         confidence=f"{confidence:.2%}",
     )
-
 
 if __name__ == '__main__':
     APP.run()
