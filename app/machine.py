@@ -14,7 +14,7 @@ class Machine:
         features = df[["Level", "Health", "Energy", "Sanity"]]
         self.model = Pipeline([
             ("scaler", StandardScaler()),
-            ("clf", RandomForestClassifier(n_estimators=120))
+            ("clf", RandomForestClassifier(n_estimators=80))
         ])
 
         self.model.fit(features, target)
